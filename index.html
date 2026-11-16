@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracking Objects Through Assembly and Decomposition</title>
+  <meta name="description" content="Prompt-free tracking and state-change understanding for object transformations.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tracking Objects Through Assembly and Decomposition">
+  <meta property="og:description" content="Prompt-free tracking and state-change understanding for object transformations.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tracking Objects Through Assembly and Decomposition">
+  <meta name="twitter:description" content="Prompt-free tracking and state-change understanding for object transformations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css?v=72">
+</head>
+<body id="top">
+
+<noscript>
+  <p class="noscript">This page needs JavaScript to display the result videos.
+    The raw videos are in <code>static/results/</code>.</p>
+</noscript>
+
+<header class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered" id="hero"></div>
+  </div>
+</header>
+
+<section class="section teaser-section" id="teaser">
+  <div class="container is-max-desktop" id="teaser-content"></div>
+</section>
+
+<section class="section" id="abstract" hidden>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="content has-text-justified" id="abstract-text"></div>
+  </div>
+</section>
+
+<section class="section" id="method" hidden>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="content section-intro" id="method-intro"></div>
+    <div id="method-steps"></div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+    <div class="content section-intro">
+      <p>
+        We first showcase Atlas on OmniST. For each instance, we show the original video (top-left), the
+        predicted object tracks (top-right), and the predicted state graph (bottom).
+      </p>
+      <p>
+        We present examples by transformation type: mixed cases involving both assembly and decomposition, followed by assembly-only and decomposition-only cases.
+      </p>
+    </div>
+    <div class="tabs-block" data-tabs="results"></div>
+  </div>
+</section>
+
+<section class="section comparison-section" id="comparisons">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Qualitative Comparisons</h2>
+    <div class="content section-intro">
+      <p>
+        We now compare GPT-4.1 + SAM3, TubeletGraph-Bidir, and Atlas on all examples shown above.
+      </p>
+    </div>
+    <div class="tabs-block" data-tabs="comparisons"></div>
+  </div>
+</section>
+
+<section class="section failure-section" id="failure-cases">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Failure Cases</h2>
+    <div id="failure-list"></div>
+  </div>
+</section>
+
+<section class="section" id="bibtex" hidden>
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code id="bibtex-text"></code></pre>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container is-max-desktop">
+    <p class="credit">This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.</p>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script src="static/js/data.js?v=68"></script>
+<script src="static/js/main.js?v=61"></script>
+</body>
+</html>

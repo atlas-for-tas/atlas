@@ -1,0 +1,556 @@
+:root {
+  --accent: #3b6fd8;
+  --font: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --heading-font: 'Google Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text: #171717;
+  --muted: #5f6368;
+  --border: #d9dde3;
+  --rule: #edf0f3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.publication-title,
+.tab-list [role="tab"],
+.cell-method {
+  font-family: var(--heading-font);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Every section shares one column; prose inside sits on the narrower measure below. */
+.container.is-max-desktop {
+  max-width: min(92%, 980px);
+}
+
+.section {
+  padding: 2.6rem 1.5rem;
+}
+
+.noscript {
+  background: #fff4e5;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* ----------------------------------------------------------------- hero */
+
+.hero-body {
+  padding: 2.25rem 1.5rem 1rem;
+}
+
+.publication-title {
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+/* Authors and affiliations, styled as on TubeletGraph (size from Bulma's is-size-4). */
+.publication-authors {
+  font-family: var(--heading-font);
+}
+
+/* Linked names look like plain names until hovered, so authors without a homepage match. */
+.publication-authors a {
+  color: inherit !important;
+}
+
+.publication-authors a:hover,
+.publication-authors a:focus-visible {
+  color: hsl(204, 86%, 53%) !important;
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* Link buttons use Bulma's `button is-rounded is-dark`, spaced as on TubeletGraph. */
+.link-block .button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* A button whose link isn't available yet ("coming soon"): same look, not clickable. */
+.button.is-unlinked {
+  cursor: default;
+  pointer-events: none;
+}
+/* --------------------------------------------------------------- teaser */
+
+.teaser-section {
+  padding-top: 0;
+}
+
+.teaser-copy {
+  font-size: 1.1rem;
+  line-height: 1.45;
+  margin-top: 0.75rem;
+}
+
+.teaser-video {
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------- videos */
+
+video {
+  background: #fff;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.comparison-id {
+  color: #202124;
+  font-size: 1rem;
+  margin-bottom: 0.65rem;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.section-intro {
+  margin-bottom: 1.5rem;
+}
+
+.section-intro p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------- methodology */
+
+.method-step {
+  margin: 0 0 2.25rem;
+}
+
+.method-step-title {
+  color: #202124;
+  font-family: var(--heading-font);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+/* The method videos are tall; keep each one within the viewport. */
+.method-step video {
+  margin: 0 auto;
+  max-height: 85vh;
+  max-width: 100%;
+  width: auto;
+}
+
+/* Several videos in one step, e.g. the forward and reverse partitions, go one above the other. */
+.method-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.method-stack video {
+  width: 100%;
+}
+
+/* Videos shown one at a time behind tabs (`layout: 'tabs'`); only the current one is visible. */
+.tab-list.method-case-tabs {
+  margin-bottom: 1.2rem;
+}
+
+/* The cases stack in one grid cell so switching never relayouts and the clip taking over is
+   already painted: hiding one with display:none made it blank on the way back in. */
+.method-carousel {
+  display: grid;
+  justify-content: center;
+}
+
+.method-carousel video {
+  grid-area: 1 / 1;
+}
+
+.method-carousel video.is-waiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The stacked videos play one at a time; the waiting one is dimmed. */
+.method-stack video {
+  transition: opacity 0.3s;
+}
+
+.method-stack video.is-waiting {
+  opacity: 0.4;
+}
+
+.method-stack video.is-waiting:hover {
+  opacity: 0.7;
+}
+
+.method-caption {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-top: 0.75rem;
+}
+
+/* Stepping through the cases, under the clip rather than over it. */
+
+/* ----------------------------------------------------------------- tabs */
+
+/* The tabs stay visible while scrolling a section. */
+.tab-bar {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Set by main.js while the bar is pinned over scrolling videos. */
+.tab-bar.is-stuck {
+  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.35);
+}
+
+/* Plain words on a hairline, the selected one underlined. */
+.tab-list {
+  --tab-gap: 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tab-gap);
+  justify-content: center;
+  margin: 0.5rem auto 0;
+  padding: 0;
+}
+
+.tab-panel {
+  margin-top: 1.2rem;
+}
+
+.tab-list [role="tab"] {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #5f6368;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.25rem;
+}
+
+.tab-list [role="tab"]:hover {
+  color: #111827;
+}
+
+.tab-list [role="tab"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tab-list [role="tab"][aria-selected="true"] {
+  border-bottom-color: var(--accent);
+  color: #111827;
+}
+
+/* -------------------------------------------------------------- results */
+
+.stage-video {
+  display: block;
+  width: 100%;
+}
+
+
+/* Thumbnails of the other examples in the category; clicking one loads it into the player. */
+.filmstrip-wrap {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2.1rem;
+}
+
+/* One row, five wide; a category with more than five scrolls behind the arrows. */
+.filmstrip {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 789px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.filmstrip::-webkit-scrollbar {
+  display: none;
+}
+
+.strip-arrow {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: #3c4043;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 0 2px;
+  width: 34px;
+}
+
+.strip-arrow:hover:not(:disabled) {
+  background: #f6f7f9;
+  color: #111827;
+}
+
+.strip-arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.strip-arrow:disabled {
+  color: #c3c8cf;
+  cursor: default;
+}
+
+/* Set by main.js only when the row actually overflows. */
+.filmstrip-wrap:not(.has-arrows) .strip-arrow {
+  display: none;
+}
+
+.filmstrip [role="tab"] {
+  background: none;
+  flex: 0 0 150px;
+  border: 2px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  padding: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.filmstrip img {
+  aspect-ratio: 16 / 9;
+  border-radius: 5px;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.filmstrip span {
+  color: #4b5563;
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  margin-top: 0.3rem;
+  overflow-wrap: anywhere;
+}
+
+.filmstrip [role="tab"]:hover {
+  background: #f6f7f9;
+}
+
+.filmstrip [role="tab"]:focus-visible {
+  outline: 2px solid #3b6fd8;
+  outline-offset: 2px;
+}
+
+.filmstrip [role="tab"][aria-selected="true"] {
+  border-color: #3b6fd8;
+}
+
+.filmstrip [role="tab"][aria-selected="true"] span {
+  color: #111827;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------- comparisons */
+
+.comparison-grid {
+  align-items: start;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Shown once above the three results, which all share it. */
+.cmp-input {
+  margin: 0 auto 1.5rem;
+  max-width: 440px;
+}
+
+.cmp-input video {
+  border: 1px solid var(--border);
+}
+
+.comparison-cell {
+  min-width: 0;
+}
+
+.comparison-cell video {
+  border: 1px solid var(--border);
+}
+
+/* Only one comparison is on stage now, so each cell carries its own method name. */
+.cell-method {
+  color: #202124;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------- failures */
+
+.failure-case {
+  margin-top: 2.5rem;
+}
+
+.failure-case:first-child {
+  margin-top: 1.25rem;
+}
+
+/* a group intro carries the spacing for the case that follows it */
+.failure-intro {
+  margin-top: 2.5rem;
+}
+
+.failure-intro:first-child {
+  margin-top: 0;
+}
+
+.failure-intro + .failure-case {
+  margin-top: 0;
+}
+
+.failure-copy {
+  color: #202124;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.failure-grid {
+  display: grid;
+  gap: 1rem;
+  /* the videos are tall once the state graph is included, so hold them well
+     inside the text column rather than letting them fill it */
+  margin: 0 auto;
+  max-width: 800px;
+  /* fallback for a case that pairs a wide Atlas video with a narrower one */
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.failure-grid.is-compact {
+  max-width: 680px;
+}
+
+.failure-grid.is-equal {
+  /* both videos are the same size, e.g. a before/after pair */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.failure-panel {
+  min-width: 0;
+}
+
+.failure-panel:only-child,
+.failure-panel.is-full {
+  grid-column: 1 / -1;
+}
+
+.failure-panel video {
+  margin: 0 auto;
+  max-height: 65vh;
+  max-width: 100%;
+  width: auto;
+}
+
+.method-title {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------- bibtex */
+
+/* Bulma's default light-grey box, as on TubeletGraph, with text in the page's colour. */
+#bibtex pre {
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------- mobile */
+
+@media screen and (max-width: 900px) {
+  .container.is-max-desktop {
+    max-width: 100%;
+  }
+
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .publication-title {
+    font-size: 2.1rem !important;
+  }
+
+  .comparison-grid,
+  .failure-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filmstrip {
+    max-width: 100%;
+  }
+
+  .filmstrip [role="tab"] {
+    flex-basis: 118px;
+  }
+
+  .tab-list [role="tab"] {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+}
+
+/* --------------------------------------------------------------- footer */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 2rem 1rem 3rem;
+}
+
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* The template credit is a normal blue link (Bulma's link colour), as on TubeletGraph. */
+.site-footer .credit a {
+  color: #3273dc;
+}
