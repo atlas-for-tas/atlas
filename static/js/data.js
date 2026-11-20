@@ -25,14 +25,14 @@ window.SITE = {
   // `icon` is a Font Awesome 5 (fas/fab) or Academicons (ai) class. A link without a `url`
   // looks the same as the others but can't be clicked (e.g. "coming soon").
   links: [
-    { label: 'Paper', icon: 'fas fa-file-pdf', url: '' },  // TODO: paper URL
-    { label: 'arXiv', icon: 'ai ai-arxiv', url: '' },      // TODO: https://arxiv.org/abs/...
+    { label: 'Paper', icon: 'fas fa-file-pdf', url: 'https://arxiv.org/pdf/2611.26269' },
+    { label: 'arXiv', icon: 'ai ai-arxiv', url: 'https://arxiv.org/abs/2611.26269' },
     { label: 'Code', icon: 'fab fa-github', url: 'https://github.com/ch3ryllam/Atlas' },
     { label: 'Data', icon: 'fas fa-database', url: 'https://huggingface.co/datasets/ch3ryllam/OmniST' },
   ],
   // HTML.
   abstract: 'Tracking objects through transformations is essential for understanding real-world dynamics. Recent work has extended traditional object tracking to detect state changes. However, existing methods require an initial object prompt and detect only its decompositions, missing assembly events, which begin with multiple objects rather than one. We therefore introduce a prompt-free formulation of this task, where the goal is to recover all object tracks and detect both decomposition and assembly events given only a video. Our key insight is that assembly is decomposition in reverse. Building on this insight, we present <strong>Atlas</strong>, a zero-shot system that constructs and jointly reasons over forward and reverse spatiotemporal partitions to recover object tracks and their transformations. We further introduce OmniST, a benchmark with dense annotations of objects and both transformation types. On OmniST, Atlas recovers more than twice as many state changes as prior methods while remaining competitive on existing benchmarks that only evaluate decomposition.',
-  bibtex: 'Coming soon!',  // TODO: replace with the BibTeX entry once the paper is on arXiv
+  bibtex: 'Coming soon!',
 
   // Methodology walkthrough. `video` (or `videos`, shown one above the other) is relative to static/results without extension.
   method: {
